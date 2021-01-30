@@ -25,55 +25,65 @@ public class MainActivity extends AppCompatActivity {
         angka2=findViewById(R.id.input2);
         hasilText=findViewById(R.id.hasil);
 
-        double angka_pertama=Double.parseDouble(angka1.getText().toString());
-        double angka_kedua=Double.parseDouble(angka2.getText().toString());
-        operan=new Operan(angka_pertama, angka_kedua);
-
-        operasi=new Operasi();
-
         String angka_pertama_string=angka1.getText().toString().trim();
         String angka_kedua_string=angka2.getText().toString().trim();
         inputValidation=new InputValidation(angka_pertama_string, angka_kedua_string);
     }
 
-    public void cekInput(){
+    public void setOperan(){
+        double angka_pertama=Double.parseDouble(angka1.getText().toString());
+        double angka_kedua=Double.parseDouble(angka2.getText().toString());
+        operan=new Operan(angka_pertama, angka_kedua);
+
+        operasi=new Operasi();
+    }
+    public boolean cekInput(){
         if(inputValidation.cekNullAngkaPertama()){
             angka1.setError( "Angka Pertama harus diisi !" );
             angka1.requestFocus();
-            throw new NullPointerException("Angka Pertama harus diisi !");
+            return false;
         }
         if(inputValidation.cekNullAngkaKedua()){
             angka2.setError( "Angka Kedua harus diisi !" );
             angka2.requestFocus();
-            throw new NullPointerException("Angka Kedua harus diisi !");
+            return false;
         }
+        return true;
     }
 
     @SuppressLint("SetTextI18n")
     public void tambah(View v){
-        cekInput();
-        double hasil=operasi.tambah(operan);
-        hasilText.setText(Double.toString(hasil));
+        if(cekInput()) {
+            setOperan();
+            double hasil=operasi.tambah(operan);
+            hasilText.setText(Double.toString(hasil));
+        }
     }
 
     @SuppressLint("SetTextI18n")
     public void kurang(View v){
-        cekInput();
-        double hasil=operasi.kurang(operan);
-        hasilText.setText(Double.toString(hasil));
+        if(cekInput()) {
+            setOperan();
+            double hasil=operasi.kurang(operan);
+            hasilText.setText(Double.toString(hasil));
+        }
     }
 
     @SuppressLint("SetTextI18n")
     public void kali(View v){
-        cekInput();
-        double hasil=operasi.kali(operan);
-        hasilText.setText(Double.toString(hasil));
+        if(cekInput()) {
+            setOperan();
+            double hasil=operasi.kali(operan);
+            hasilText.setText(Double.toString(hasil));
+        }
     }
 
     @SuppressLint("SetTextI18n")
     public void bagi(View v){
-        cekInput();
-        double hasil=operasi.bagi(operan);
-        hasilText.setText(Double.toString(hasil));
+        if(cekInput()) {
+            setOperan();
+            double hasil=operasi.bagi(operan);
+            hasilText.setText(Double.toString(hasil));
+        }
     }
 }

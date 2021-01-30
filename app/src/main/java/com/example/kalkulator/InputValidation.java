@@ -10,9 +10,9 @@ public class InputValidation {
     }
 
     public boolean cekNullAngkaPertama(){
-        return !this.angka_pertama.equals("");
+        return this.angka_pertama.equals("");
     }
     public boolean cekNullAngkaKedua(){
-        return !this.angka_kedua.equals("");
+        return this.angka_kedua.equals("");
     }
 }
